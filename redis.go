@@ -1,18 +1,21 @@
 package redis
 
 // @author  Mikhail Kirillov <mikkirillov@yandex.ru>
-// @version 1.000
-// @date    2017-07-06
+// @version 1.001
+// @date    2019-07-09
 
 import (
+	"time"
+
 	"github.com/FZambia/go-sentinel"
 	r "github.com/garyburd/redigo/redis"
-	"time"
 )
 
 var sntnl *sentinel.Sentinel
 
-func RedisPool(cfg *Config) *r.Pool {
+type Pool = r.Pool
+
+func RedisPool(cfg *Config) *Pool {
 
 	if cfg.Failover {
 
